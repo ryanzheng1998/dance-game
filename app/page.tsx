@@ -1,23 +1,15 @@
 import fs from 'fs/promises'
+import { FrontPage } from './FrontPage'
+import { Ready } from './Ready'
+import { Webcam } from './Webcam'
 export default async function Home() {
-  const songsRaw = await fs.readdir('./public/videos')
-  const songs = songsRaw.map((s) => s.split('.')[0])
+  const songs = await fs.readdir('./public/videos')
 
   return (
-    <div className="grid h-screen w-screen place-items-center bg-gradient-to-b from-slate-500 to-slate-800">
-      <div className="grid place-items-center gap-4">
-        {songs.map((s) => {
-          return (
-            <a
-              href={`/${s}`}
-              className="text-3xl text-white shadow-2xl"
-              key={s}
-            >
-              {s}
-            </a>
-          )
-        })}
-      </div>
+    <div>
+      <FrontPage songs={songs} />
+      <Ready />
+      <Webcam />
     </div>
   )
 }

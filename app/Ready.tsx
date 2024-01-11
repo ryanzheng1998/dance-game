@@ -86,13 +86,31 @@ export function Ready() {
     )
   })
 
-  return (
-    <div className="fixed inset-0 grid place-items-center">
-      {animatedContent}
-      {animatedContent2}
-      {animatedContent3}
-      {animatedContent4}
-      {animatedContent5}
-    </div>
+  const transition6 = useTransition(
+    store.currentSong !== null && store.countDown !== -1,
+    {
+      from: { opacity: 0 },
+      enter: { opacity: 1 },
+      leave: { opacity: 0 },
+    }
   )
+
+  const animatedContent6 = transition6((style, item) => {
+    if (!item) return
+
+    return (
+      <a.div
+        style={style}
+        className={`fixed inset-0 z-30 grid place-items-center bg-white`}
+      >
+        {animatedContent}
+        {animatedContent2}
+        {animatedContent3}
+        {animatedContent4}
+        {animatedContent5}
+      </a.div>
+    )
+  })
+
+  return animatedContent6
 }

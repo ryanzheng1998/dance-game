@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useRef } from 'react'
+import { startPlay } from './startPlay'
 import { useStore } from './useStore'
 
 export const useCountDown = () => {
@@ -15,6 +16,7 @@ export const useCountDown = () => {
       const t = t2 - startTimeRef.current
 
       if (countDownRef.current === 0) {
+        startPlay()
         return
       }
 
