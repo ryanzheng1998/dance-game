@@ -1,6 +1,7 @@
 'use client'
 
 import { a, useTransition } from '@react-spring/web'
+import { setUp } from './setUp'
 import { startPlay } from './startPlay'
 import { useStore } from './useStore'
 
@@ -36,6 +37,10 @@ export const FrontPage = (p: { songs: string[] }) => {
 
                   const draw = (t2: number) => {
                     const t = t2 - startTime
+
+                    if (countDown === 5) {
+                      setUp()
+                    }
 
                     if (countDown === -1) {
                       startPlay()

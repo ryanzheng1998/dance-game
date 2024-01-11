@@ -6,20 +6,17 @@ import { useStore } from './useStore'
 export function Webcam() {
   const store = useStore()
 
-  const transition = useTransition(
-    store.currentSong !== null && store.countDown < 3,
-    {
-      from: { opacity: 0 },
-      enter: { opacity: 1 },
-      leave: { opacity: 0 },
-    }
-  )
+  const transition = useTransition(store.currentSong !== null, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+  })
 
   const animatedContent = transition((style, item) => {
     if (!item) return
 
     return (
-      <a.div style={style} className="">
+      <a.div style={style} className="fixed inset-0">
         <video
           id="video"
           className="absolute left-0 z-10 h-screen bg-transparent"
