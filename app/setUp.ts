@@ -90,7 +90,7 @@ export const setUp = async (
             currentData.poseData,
             landmark.landmarks?.[0]?.map((l) => [l.x, l.y, l.z]) ?? []
           )
-          return similarity
+          return similarity || 0
         })
 
         const maxSimilarity = Math.max(...allSimilarities)
