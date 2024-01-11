@@ -1,4 +1,5 @@
 import fs from 'fs/promises'
+import { Ready } from './Ready'
 import { Webcam } from './Webcam'
 export default async function Home({ params }: { params: { song: string } }) {
   const decodedSong = decodeURIComponent(params.song)
@@ -12,6 +13,7 @@ export default async function Home({ params }: { params: { song: string } }) {
   }
   return (
     <div>
+      <Ready />
       <Webcam poseData={poseData} />
     </div>
   )

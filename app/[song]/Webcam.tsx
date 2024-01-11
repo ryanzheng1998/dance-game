@@ -10,5 +10,5 @@ export function Webcam(p: {
 
   useCountDown()
 
-  return <div className="">{store.countDown}</div>
+  return <div className=""></div>
 }
