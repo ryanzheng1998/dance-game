@@ -1,3 +1,4 @@
+import { NormalizedLandmark } from '@mediapipe/tasks-vision'
 import { create } from 'zustand'
 
 interface State {
@@ -5,6 +6,8 @@ interface State {
   decressCountDown: () => void
   currentSong: null | string
   setCurrentSong: (song: string) => void
+  landMarks: NormalizedLandmark[]
+  scores: number[]
 }
 
 export const useStore = create<State>((set, get) => ({
@@ -12,6 +15,8 @@ export const useStore = create<State>((set, get) => ({
   decressCountDown: () => set((state) => ({ countDown: state.countDown - 1 })),
   currentSong: null,
   setCurrentSong: (song: string) => set({ currentSong: song }),
+  landMarks: [],
+  scores: [],
 }))
 
 // export const useStore = create<State>((set, get) => ({

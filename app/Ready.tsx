@@ -101,7 +101,7 @@ export function Ready() {
     return (
       <a.div
         style={style}
-        className={`fixed inset-0 z-30 grid place-items-center bg-white bg-opacity-30`}
+        className={`fixed inset-0 z-30 grid place-items-center bg-white bg-opacity-50`}
       >
         {animatedContent}
         {animatedContent2}

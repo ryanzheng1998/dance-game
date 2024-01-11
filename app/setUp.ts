@@ -31,4 +31,24 @@ export const setUp = async () => {
     runningMode: 'VIDEO',
     numPoses: 2,
   })
+
+  const draw = (t: number) => {
+    poseLandmarker.detectForVideo(webcam, t, (result) => {
+      ctx.save()
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+      for (const landmark of result.landmarks) {
+        drawingUtils.drawLandmarks(landmark, {
+          radius: (data) => DrawingUtils.lerp(data.from!.z, -0.15, 0.1, 5, 1),
+        })
+        drawingUtils.drawConnectors(landmark, PoseLandmarker.POSE_CONNECTIONS)
+      }
+
+      ctx.restore()
+    })
+
+    requestAnimationFrame(draw)
+  }
+
+  requestAnimationFrame(draw)
 }
