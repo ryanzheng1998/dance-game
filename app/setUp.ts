@@ -6,7 +6,11 @@ import {
   PoseLandmarker,
 } from '@mediapipe/tasks-vision'
 
-export const setUp = async (song: string, startTime: number) => {
+export const setUp = async (
+  song: string,
+  startTime: number,
+  onPoseTrigger: (score: number) => void
+) => {
   // setup webcam
   const webcam = document.getElementById('webcam') as HTMLVideoElement
   const stream = await navigator.mediaDevices.getUserMedia({
@@ -92,7 +96,7 @@ export const setUp = async (song: string, startTime: number) => {
         const maxSimilarity = Math.max(...allSimilarities)
 
         console.log(maxSimilarity)
-        console.log(allLandmarks)
+        onPoseTrigger(maxSimilarity)
       }
     })
 

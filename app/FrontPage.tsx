@@ -39,7 +39,17 @@ export const FrontPage = (p: { songs: string[] }) => {
                     const t = t2 - startTime
 
                     if (countDown === 5) {
-                      setUp(name, performance.now() + 5000)
+                      setUp(name, performance.now() + 5000, (score) => {
+                        store.addScore(score)
+                        if (score > 90) store.setShowScoreLabel('PERFECT')
+                        if (score > 80 && score < 90)
+                          store.setShowScoreLabel('GOOD')
+                        if (score < 75) store.setShowScoreLabel('BAD')
+
+                        setTimeout(() => {
+                          store.setShowScoreLabel(null)
+                        }, 1000)
+                      })
                     }
 
                     if (countDown === -1) {

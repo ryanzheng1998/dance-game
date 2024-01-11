@@ -1,6 +1,7 @@
 'use client'
 
 import { a, useTransition } from '@react-spring/web'
+import { ScoreLabel } from './ScoreLabel'
 import { useStore } from './useStore'
 
 export function Webcam() {
@@ -19,7 +20,7 @@ export function Webcam() {
       <a.div style={style} className="fixed inset-0">
         <video
           id="video"
-          className="absolute left-0 z-10 h-screen bg-transparent"
+          className="absolute left-0 z-10 h-screen"
           src={`/videos/${store.currentSong}`}
           onEnded={() => {
             console.log('end')
@@ -38,6 +39,7 @@ export function Webcam() {
             />
           </div>
         </div>
+        <ScoreLabel />
       </a.div>
     )
   })
