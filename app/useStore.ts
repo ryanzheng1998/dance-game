@@ -9,6 +9,8 @@ interface State {
   addScore: (score: number) => void
   showScoreLabel: null | 'PERFECT' | 'GOOD' | 'BAD'
   setShowScoreLabel: (label: null | 'PERFECT' | 'GOOD' | 'BAD') => void
+  end: boolean
+  setEnd: (end: boolean) => void
 }
 
 export const useStore = create<State>((set, get) => ({
@@ -22,6 +24,8 @@ export const useStore = create<State>((set, get) => ({
   showScoreLabel: null,
   setShowScoreLabel: (label: null | 'PERFECT' | 'GOOD' | 'BAD') =>
     set({ showScoreLabel: label }),
+  end: false,
+  setEnd: (end: boolean) => set({ end }),
 }))
 
 // export const useStore = create<State>((set, get) => ({

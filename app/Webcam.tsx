@@ -24,6 +24,7 @@ export function Webcam() {
           src={`/videos/${store.currentSong}`}
           onEnded={() => {
             console.log('end')
+            store.setEnd(true)
           }}
         />
         <div className="absolute h-screen w-screen overflow-hidden">
