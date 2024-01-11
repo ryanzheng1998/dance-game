@@ -24,7 +24,7 @@ export const FrontPage = (p: { songs: string[] }) => {
       >
         <div className="grid place-items-center gap-4">
           {p.songs.map((s) => {
-            const name = s.split('.')[0]
+            const name = s.split('.')[0]!
             return (
               <button
                 className="text-3xl text-white shadow-2xl"
@@ -39,7 +39,7 @@ export const FrontPage = (p: { songs: string[] }) => {
                     const t = t2 - startTime
 
                     if (countDown === 5) {
-                      setUp()
+                      setUp(name, performance.now() + 5000)
                     }
 
                     if (countDown === -1) {

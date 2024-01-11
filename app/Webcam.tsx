@@ -21,6 +21,9 @@ export function Webcam() {
           id="video"
           className="absolute left-0 z-10 h-screen bg-transparent"
           src={`/videos/${store.currentSong}`}
+          onEnded={() => {
+            console.log('end')
+          }}
         />
         <div className="absolute h-screen w-screen overflow-hidden">
           <div className="translate-x-44">
