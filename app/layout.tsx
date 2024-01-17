@@ -13,6 +13,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="prefetch" href="/wasm/vision_wasm_internal.js" as="script" />
+        <link
+          rel="prefetch"
+          href="/wasm/vision_wasm_internal.wasm"
+          as="script"
+        />
+      </head>
       <body>{children}</body>
     </html>
   )

@@ -12,6 +12,17 @@ export function ScoreLabel() {
     leave: { opacity: 0 },
   })
 
+  const labelString = (() => {
+    switch (store.showScoreLabel) {
+      case 'PERFECT':
+        return '完美！'
+      case 'GOOD':
+        return '不錯！'
+      case 'BAD':
+        return '糟糕 ☹️'
+    }
+  })()
+
   const animatedContent = transition((style, item) => {
     if (!item) return
 
@@ -20,7 +31,7 @@ export function ScoreLabel() {
         style={style}
         className="absolute right-0 text-8xl text-white drop-shadow-2xl"
       >
-        {store.showScoreLabel}
+        {labelString}
       </a.label>
     )
   })
