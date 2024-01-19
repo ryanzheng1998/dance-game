@@ -20,7 +20,17 @@ export const EndScreen = () => {
     return (
       <a.div style={style} className="fixed inset-0 z-50 bg-white">
         <div className="grid h-screen w-screen place-items-center">
-          <p className="text-6xl"> Final Score: {averageScore.toFixed(2)}</p>
+          <div className="grid place-items-center gap-10">
+            <p className="text-6xl"> Final Score: {averageScore.toFixed(2)}</p>
+            <button
+              onClick={() => {
+                store.restart()
+              }}
+              className="rounded bg-blue-500 px-4 py-2 text-3xl font-bold text-white hover:bg-blue-700"
+            >
+              再来一次～
+            </button>
+          </div>
         </div>
       </a.div>
     )

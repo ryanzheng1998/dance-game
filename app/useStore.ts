@@ -11,6 +11,7 @@ interface State {
   setShowScoreLabel: (label: null | 'PERFECT' | 'GOOD' | 'BAD') => void
   end: boolean
   setEnd: (end: boolean) => void
+  restart: () => void
 }
 
 export const useStore = create<State>((set, get) => ({
@@ -26,6 +27,15 @@ export const useStore = create<State>((set, get) => ({
     set({ showScoreLabel: label }),
   end: false,
   setEnd: (end: boolean) => set({ end }),
+  restart: () => {
+    set({
+      countDown: 5,
+      currentSong: null,
+      scores: [],
+      showScoreLabel: null,
+      end: false,
+    })
+  },
 }))
 
 // export const useStore = create<State>((set, get) => ({
@@ -33,10 +43,21 @@ export const useStore = create<State>((set, get) => ({
 //   decressCountDown: () => set((state) => ({ countDown: state.countDown - 1 })),
 //   currentSong: '花园种花.mp4',
 //   setCurrentSong: (song: string) => set({ currentSong: song }),
-//   scores: [],
+//   scores: [30],
 //   addScore: (score: number) =>
 //     set((state) => ({ scores: [...state.scores, score] })),
 //   showScoreLabel: null,
 //   setShowScoreLabel: (label: null | 'PERFECT' | 'GOOD' | 'BAD') =>
 //     set({ showScoreLabel: label }),
+//   end: true,
+//   setEnd: (end: boolean) => set({ end }),
+//   restart: () => {
+//     set({
+//       countDown: 5,
+//       currentSong: null,
+//       scores: [],
+//       showScoreLabel: null,
+//       end: false,
+//     })
+//   },
 // }))

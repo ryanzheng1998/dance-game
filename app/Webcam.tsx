@@ -18,6 +18,7 @@ export function Webcam() {
 
     return (
       <a.div style={style} className="fixed inset-0">
+        <link href={`/videos/${store.currentSong}`} rel="prefetch" as="video" />
         <video
           id="video"
           className="absolute left-0 z-10 h-screen"
